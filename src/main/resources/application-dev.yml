@@ -1,0 +1,38 @@
+spring:
+  datasource:
+    name: test
+    url: jdbc:mysql://localhost:3306/mamabike
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+  #activeMQ
+  activemq:
+      broker-url: tcp://localhost:61616
+      pool:
+        enabled: false
+  #kafka
+  kafka:
+    producer:
+      retries: 0
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      bootstrap-servers: localhost:9092
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: mygroup
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+
+#reids
+redis:
+  host: 140.143.237.204
+  port: 6379
+  max-idle: 5
+  max-total: 10
+  max-wait-millis: 3000
